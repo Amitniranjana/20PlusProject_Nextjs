@@ -43,3 +43,98 @@ a {
     color-scheme: dark;
   }
 }
+.tabform-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Tabs Header Container */
+.tabsContainer {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+}
+
+/* Individual Tab Button */
+.tabs button {
+  padding: 8px 18px;
+  background-color: #f3f4f6;
+  color: #0e1522;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tabs button:hover {
+  background-color: #e3e7ef;
+}
+
+/* Active Section Box */
+.sections {
+  margin-bottom: 24px;
+  min-height: 120px;
+}
+
+/* Form Inputs styling (agar components ke andar className na ho toh basic styling) */
+.sections input[type="text"],
+.sections input[type="number"] {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  outline: none;
+
+}
+
+.sections input[type="text"]:focus,
+.sections input[type="number"]:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Navigation Buttons (Prev / Next / Submit) */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.nav-buttons button {
+  padding: 8px 20px;
+  background-color: #2563eb;
+  color: rgb(245, 238, 238);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.nav-buttons button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Data Preview Box at the bottom */
+.data-preview {
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #171d26;
+  margin-top: 8px;
+}
+.profileFields{
+  color: #ac582b;
+}
