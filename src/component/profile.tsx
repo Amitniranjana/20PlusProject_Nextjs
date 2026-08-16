@@ -1,12 +1,22 @@
-export default function Profile({ data, setData }) {
-  const { name, age, gender } = data;
-  const arr = ["name", "age", "gender"];
-  const handleData = (e) => {
+import type { FormData } from "./formTypes";
+
+type ProfileProps = {
+  data: FormData;
+  setData: React.Dispatch<React.SetStateAction<FormData>>;
+};
+
+export default function Profile({ data, setData }: ProfileProps) {
+  const arr = ["name", "age", "gender"] as const;
+
+  const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName = e.target.name as keyof FormData["profile"];
+
     setData((prev) => ({
       ...prev,
-      profile: { ...prev.profile, [e.target.name]: e.target.value },
+      profile: { ...prev.profile, [fieldName]: e.target.value },
     }));
   };
+
   return (
     <div>
       Profile
@@ -17,7 +27,7 @@ export default function Profile({ data, setData }) {
             <input
               type={val === "name" ? "text" : "number"}
               name={val}
-              value={data[val]}
+              value={data.profile[val]}
               onChange={handleData}
             />
           </div>

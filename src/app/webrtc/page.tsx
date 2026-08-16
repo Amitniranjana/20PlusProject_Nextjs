@@ -1,13 +1,13 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 export default function WebRTCVideoCall() {
   // References to attach the video streams to the HTML video tags
-  const localVideoRef = useRef(null);
-  const remoteVideoRef = useRef(null);
+  const localVideoRef = useRef<HTMLVideoElement | null>(null);
+  const remoteVideoRef = useRef<HTMLVideoElement | null>(null);
 
   // Reference to hold the WebRTC connection object
-  const peerConnectionRef = useRef(null);
+  const peerConnectionRef = useRef<RTCPeerConnection | null>(null);
 
   // 1. Configure the STUN Server (Using Google's free STUN servers)
   const rtcConfig = {
@@ -41,7 +41,7 @@ export default function WebRTCVideoCall() {
     peerConnectionRef.current = peerConnection;
 
     // Add local video/audio tracks to the connection so the other person can see/hear you
-    const localStream = localVideoRef.current.srcObject;
+    const localStream = localVideoRef.current?.srcObject as MediaStream | null;
     if (localStream) {
       localStream.getTracks().forEach((track) => {
         peerConnection.addTrack(track, localStream);
