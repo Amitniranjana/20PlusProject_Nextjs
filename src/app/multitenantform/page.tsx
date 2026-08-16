@@ -1,11 +1,13 @@
 'use client'
 
 import Interest from "@/component/interest";
-import Setting from "@/component/setting"
-import Profile from "@/component/profile"
+import Profile from "@/component/profile";
+import Setting from "@/component/setting";
+import type { FormData } from "@/component/formTypes";
 import { useState } from "react";
+
 export default function Tabform() {
-  const [data, setData] = useState({
+  const [data, setData] = useState<FormData>({
     profile: {
       name: " ",
       age: " ",

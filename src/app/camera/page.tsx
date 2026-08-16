@@ -174,38 +174,34 @@
 // export default Camera;
 
 'use client'
-import React, { useEffect, useRef ,useState} from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Camera = () => {
-  const[videoStream , setVideoStream]=useState("");
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const videoStreamPlay=async()=>{
-    // getUserMedia return a promise
-const stream =await navigator.mediaDevices.getUserMedia({video:true});
-videoRef.current.srcObject=stream;
-console.dir(videoRef.current)
+  const videoStreamPlay = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    } catch (error) {
+      console.error('Unable to access camera:', error);
+    }
+  };
 
-  }
-  useEffect( () => {
+  useEffect(() => {
+    void videoStreamPlay();
+  }, []);
 
-videoStreamPlay()
-
-    console.dir(videoRef.current);
-  }, [])
-
-  
   return (
-    <>
-      <div className='flex justify-center items-center h-screen w-screen flex-col'>
-        <h1>web Cam</h1>
-        <div className='bg-slate-700 h-1/2 w-1/2 rounded-xl overflow-hidden '>
-          <video ref={videoRef} autoPlay controls className='h-full w-full' />
-        </div>
-        <button className='bg-blue-700 p-2 m-1 rounded-xl'>play/pause</button>
-
+    <div className='flex justify-center items-center h-screen w-screen flex-col'>
+      <h1>web Cam</h1>
+      <div className='bg-slate-700 h-1/2 w-1/2 rounded-xl overflow-hidden '>
+        <video ref={videoRef} autoPlay controls className='h-full w-full' />
       </div>
-    </>
+      <button className='bg-blue-700 p-2 m-1 rounded-xl'>play/pause</button>
+    </div>
   )
 }
 

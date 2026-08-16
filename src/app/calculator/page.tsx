@@ -1,11 +1,10 @@
 "use client"
-import { div, h1 } from 'framer-motion/client'
 import { evaluate } from 'mathjs'
 import React, { useState } from 'react'
 
 const Page = () => {
     const [keyVal, setKeyVal] = useState("")
-    const [output, setOutput] = useState('')
+    const [output, setOutput] = useState<number | string>('')
     const [history, setHistory] = useState<number[]>([]);
     const keys = [
         [0, 1, 2],
@@ -15,18 +14,18 @@ const Page = () => {
         ['*', '=', '/',]
     ];
 
-    const storeVal = (e) => {
-        if (e.target.value == '=') {
+    const storeVal = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const buttonValue = e.currentTarget.value;
+
+        if (buttonValue === '=') {
             const result = evaluate(keyVal);
             setKeyVal(result.toString());
             setOutput(result);
-            setHistory((prev) => [...prev, result]);
-            return
+            setHistory((prev) => [...prev, Number(result)]);
+            return;
         }
-        setKeyVal((prev) => (
-            prev + e.target.value
 
-        ))
+        setKeyVal((prev) => prev + buttonValue);
     }
     return (
 
