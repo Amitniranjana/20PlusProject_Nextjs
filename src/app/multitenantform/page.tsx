@@ -3,6 +3,7 @@
 import Interest from "@/component/interest";
 import Profile from "@/component/profile";
 import Setting from "@/component/setting";
+import NestedCheckbox from "@/component/nestedCheckbox";
 import type { FormData } from "@/component/formTypes";
 import { useState } from "react";
 
@@ -34,6 +35,10 @@ export default function Tabform() {
     {
       name: "Setting",
       component: Setting,
+    },
+    {
+      name: "NestedCheckbox",
+      component: NestedCheckbox,
     },
   ];
 
